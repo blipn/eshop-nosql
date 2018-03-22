@@ -23,6 +23,9 @@ npm run build
 npm run populate
 npm run start-all
 
+
 API running at http://localhost:3001
+
 Store running at http://localhost:3000
+
 Admin dashboard running at http://localhost:3000/admin
