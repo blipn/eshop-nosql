@@ -17,12 +17,13 @@ React and Node.js based eCommerce platform.
 
 
 ## Installation & Launch
+```
 npm cache verify
 npm install
 npm run build
 npm run populate
 npm run start-all
-
+```
 
 API running at http://localhost:3001
 
