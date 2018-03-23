@@ -78,7 +78,7 @@
     "theme": "file:theme",
     "ua-parser-js": "^0.7.17",
     "webpack": "^4.1.1",
-    "webpack-cli": "^2.0.11",
+    "webpack-cli": "^2.0.13",
     "winston": "^2.4.1",
     "ws": "^5.1.0"
   },
