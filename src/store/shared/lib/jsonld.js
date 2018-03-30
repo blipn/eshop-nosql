@@ -65,6 +65,7 @@ const getProduct = (product, settings) => {
     "@context": "http://schema.org/",
     "@type": "Product",
     "name": product.name,
+    "brand": product.brand,
     "description": product.meta_description,
     "image": imageUrl,
     "sku": product.sku,

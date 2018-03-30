@@ -36,6 +36,7 @@ const SearchResult = ({ products, selectedId, settings, onSelect }) => {
     return (
       <TableRow key={index} selected={isSelected}>
         <TableRowColumn>{product.name}</TableRowColumn>
+        <TableRowColumn>{product.brand}</TableRowColumn>
         <TableRowColumn>{product.category_name}</TableRowColumn>
         <TableRowColumn>{product.sku}</TableRowColumn>
         <TableRowColumn style={{ textAlign: 'right' }}>{priceFormatted}</TableRowColumn>

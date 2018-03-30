@@ -16,6 +16,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         id: values.id,
         name: values.name,
         slug: values.slug,
+        brand: values.brand,
         meta_title: values.meta_title,
         meta_description: values.meta_description,
         description: values.description

@@ -267,6 +267,7 @@ class ProductsService {
       options: 1,
       variants: 1,
       weight: 1,
+      brand: 1,
       dimensions: 1,
       attributes: 1,
       date_stock_expected: 1,
@@ -609,6 +610,7 @@ class ProductsService {
     product.quantity_inc = parse.getNumberIfPositive(data.quantity_inc) || 1;
     product.quantity_min = parse.getNumberIfPositive(data.quantity_min) || 1;
     product.weight = parse.getNumberIfPositive(data.weight) || 0;
+    product.brand = parse.getString(data.brand);
     product.stock_quantity = parse.getNumberIfPositive(data.stock_quantity) || 0;
     product.position = parse.getNumberIfValid(data.position);
     product.date_stock_expected = parse.getDateIfValid(data.date_stock_expected);
@@ -722,6 +724,10 @@ class ProductsService {
 
     if(data.quantity_min !== undefined) {
       product.quantity_min = parse.getNumberIfPositive(data.quantity_min) || 1;
+    }
+
+    if(data.brand !== undefined) {
+      product.brand = parse.getString(data.brand);
     }
 
     if(data.weight !== undefined) {

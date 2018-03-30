@@ -119,6 +119,7 @@ export default class ProductDetails extends React.Component {
                   <div className="content">
                     <Tags tags={product.tags} />
                     <h1 className="title is-4 product-name">{product.name}</h1>
+                    <h1 className="title is-4 product-name">{product.brand}</h1>
                     <Price product={product} variant={selectedVariant} isAllOptionsSelected={isAllOptionsSelected} settings={settings} />
 
                     {themeSettings.show_discount_countdown && product.on_sale === true &&
