@@ -95,14 +95,6 @@ export default class ProductDetails extends React.Component {
 
   render() {
     const {product, settings, categories} = this.props;
-    let keys = [];
-    if(product.compatibility) keys = product.compatibility.split(',');
-    let keys0 = null;
-    let keys1 = null;
-    let keys2 = null;
-    if(keys[0]) keys0 = `/${keys[0]}`;
-    if(keys[1]) keys1 = `/${keys[1]}`;
-    if(keys[2]) keys2 = `/${keys[2]}`;
 
     let rating;
     let comments;
@@ -114,6 +106,17 @@ export default class ProductDetails extends React.Component {
       });
       rate = rate / Object.keys(rating).length;
       rate = Math.round(rate);
+    }
+
+    const compatibilityWidget = function() {
+      if(product.compatibility){
+        let products = product.compatibility.split(',');
+        let compatible = products.map((key, i) => {
+          if(i === 0) return([<span>Compatible Products : </span> ,getCompatible(key)]);
+          return([<span> - </span>, getCompatible(key)]);
+        });
+        return(compatible);
+      }
     }
 
     const commentaries = function() {
@@ -128,6 +131,8 @@ export default class ProductDetails extends React.Component {
           });
           return(comms);
         }
+      }else{
+        return(<p>No review for this product</p>);
       }
     };
 
@@ -144,6 +149,11 @@ export default class ProductDetails extends React.Component {
 
     const getCom = function(key, comments) {
       return(<div style={comStyle} key={key}><p>{key} : {comments[key]}</p></div>);
+    };
+
+    const getCompatible = function(key) {
+      let url = `/${key}`; 
+      return(<a href={url} target="_blank"> {key.toUpperCase()} </a>);
     };
 
     const {selectedVariant, isAllOptionsSelected} = this.state;
@@ -194,19 +204,7 @@ export default class ProductDetails extends React.Component {
                     <div className="button-addtocart">
                       <AddToCartButton product={product} variant={selectedVariant} addCartItem={this.addToCart} isAllOptionsSelected={isAllOptionsSelected} />
                     </div>
-                    {product.compatibility &&
-                      <p> Compatible Products : 
-                      { keys0 &&
-                        <a href={keys0} target="_blank"> {keys[0].toUpperCase()} </a>
-                      }
-                      { keys1 &&
-                        <a href={keys1} target="_blank"> - {keys[1].toUpperCase()} </a>
-                      }
-                      { keys2 &&
-                        <a href={keys2} target="_blank"> - {keys[2].toUpperCase()} </a>
-                      }
-                      </p>
-                    }
+                    {compatibilityWidget()}
                   </div>
                 </div>
               </div>
