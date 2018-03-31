@@ -95,7 +95,8 @@ export default class ProductDetails extends React.Component {
 
   render() {
     const {product, settings, categories} = this.props;
-    const keys = product.compatibility.split(',');
+    let keys = [];
+    if(product.compatibility) keys = product.compatibility.split(',');
     let keys0 = null;
     let keys1 = null;
     let keys2 = null;
