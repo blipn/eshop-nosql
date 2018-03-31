@@ -66,6 +66,7 @@ const getProduct = (product, settings) => {
     "@type": "Product",
     "name": product.name,
     "brand": product.brand,
+    "compatibility": product.compatibility,
     "description": product.meta_description,
     "image": imageUrl,
     "sku": product.sku,

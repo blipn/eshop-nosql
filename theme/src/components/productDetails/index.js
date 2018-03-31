@@ -2,7 +2,6 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import * as helper from '../../lib/helper'
 import { themeSettings, text } from '../../lib/settings'
-import Disqus from '../comments/disqus'
 import ViewedProducts from '../products/viewed'
 
 import Breadcrumbs from './breadcrumbs'
@@ -96,6 +95,14 @@ export default class ProductDetails extends React.Component {
 
   render() {
     const {product, settings, categories} = this.props;
+    const keys = product.compatibility.split(',');
+    let keys0 = null;
+    let keys1 = null;
+    let keys2 = null;
+    if(keys[0]) keys0 = `/${keys[0]}`;
+    if(keys[1]) keys1 = `/${keys[1]}`;
+    if(keys[2]) keys2 = `/${keys[2]}`;
+
     const {selectedVariant, isAllOptionsSelected} = this.state;
     const maxQuantity = product.stock_status === 'discontinued' ?
       0 :
@@ -131,7 +138,19 @@ export default class ProductDetails extends React.Component {
                     <div className="button-addtocart">
                       <AddToCartButton product={product} variant={selectedVariant} addCartItem={this.addToCart} isAllOptionsSelected={isAllOptionsSelected} />
                     </div>
-
+                    {product.compatibility &&
+                      <p> Compatible Products : 
+                      { keys0 &&
+                        <a href={keys0} target="_blank"> {keys[0].toUpperCase()} </a>
+                      }
+                      { keys1 &&
+                        <a href={keys1} target="_blank"> - {keys[1].toUpperCase()} </a>
+                      }
+                      { keys2 &&
+                        <a href={keys2} target="_blank"> - {keys[2].toUpperCase()} </a>
+                      }
+                      </p>
+                    }
                   </div>
                 </div>
               </div>
@@ -168,19 +187,6 @@ export default class ProductDetails extends React.Component {
               product={product}
               limit={themeSettings.limit_viewed_products || 4}
             />
-          }
-
-          {themeSettings.disqus_shortname && themeSettings.disqus_shortname !== '' &&
-            <section className="section">
-              <div className="container">
-                <Disqus
-                  shortname={themeSettings.disqus_shortname}
-                  identifier={product.id}
-                  title={product.name}
-                  url={product.url}
-                />
-              </div>
-            </section>
           }
         </Fragment>
       )
