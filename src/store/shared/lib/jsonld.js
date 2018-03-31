@@ -67,6 +67,8 @@ const getProduct = (product, settings) => {
     "name": product.name,
     "brand": product.brand,
     "compatibility": product.compatibility,
+    "rating": product.rating,
+    "comments": product.comments,
     "description": product.meta_description,
     "image": imageUrl,
     "sku": product.sku,

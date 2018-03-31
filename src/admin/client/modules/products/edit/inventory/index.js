@@ -24,6 +24,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         weight: values.weight,
         brand: values.brand,
         compatibility: values.compatibility,
+        rating: values.rating,
+        comments: values.comments,
         date_stock_expected: values.date_stock_expected,
         stock_tracking: values.stock_tracking,
         stock_preorder: values.stock_preorder,

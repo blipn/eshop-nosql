@@ -269,6 +269,8 @@ class ProductsService {
       weight: 1,
       brand: 1,
       compatibility: 1,
+      rating: 1,
+      comments: 1,
       dimensions: 1,
       attributes: 1,
       date_stock_expected: 1,
@@ -613,6 +615,8 @@ class ProductsService {
     product.weight = parse.getNumberIfPositive(data.weight) || 0;
     product.brand = parse.getString(data.brand);
     product.compatibility = parse.getString(data.compatibility);
+    product.rating = parse.getString(data.rating);
+    product.comments = parse.getString(data.comments);
     product.stock_quantity = parse.getNumberIfPositive(data.stock_quantity) || 0;
     product.position = parse.getNumberIfValid(data.position);
     product.date_stock_expected = parse.getDateIfValid(data.date_stock_expected);
@@ -734,6 +738,14 @@ class ProductsService {
 
     if(data.compatibility !== undefined) {
       product.compatibility = parse.getString(data.compatibility);
+    }
+
+    if(data.comments !== undefined) {
+      product.comments = parse.getString(data.comments);
+    }
+
+    if(data.rating !== undefined) {
+      product.rating = parse.getString(data.rating);
     }
 
     if(data.weight !== undefined) {

@@ -104,6 +104,48 @@ export default class ProductDetails extends React.Component {
     if(keys[1]) keys1 = `/${keys[1]}`;
     if(keys[2]) keys2 = `/${keys[2]}`;
 
+    let rating;
+    let comments;
+    let rate = 0;
+    if(product.rating){
+      rating = JSON.parse(product.rating);
+      Object.keys(rating).forEach(function(key) {
+        rate += rating[key];
+      });
+      rate = rate / Object.keys(rating).length;
+      rate = Math.round(rate);
+    }
+
+    const commentaries = function() {
+      if(product.comments){
+        comments = JSON.parse(product.comments);
+        if(Object.keys(comments).length < 1) {
+          return(<p>No review for this product</p>)
+        }else{
+          let comms = Object.keys(comments).map((key, i) => {
+            if(i === 0) return([<h4 style={titleComStyle}>Reviews :</h4>, <br></br> ,getCom(key, comments)]);
+            return(getCom(key, comments));
+          });
+          return(comms);
+        }
+      }
+    };
+
+    const titleComStyle = {
+      marginTop: '18px',
+    }
+
+    const comStyle = {
+      padding: '10px',
+      backgroundColor: 'beige',
+      borderRadius: '10px',
+      margin: '10px',
+    };
+
+    const getCom = function(key, comments) {
+      return(<div style={comStyle} key={key}><p>{key} : {comments[key]}</p></div>);
+    };
+
     const {selectedVariant, isAllOptionsSelected} = this.state;
     const maxQuantity = product.stock_status === 'discontinued' ?
       0 :
@@ -129,6 +171,19 @@ export default class ProductDetails extends React.Component {
                     <h1 className="title is-4 product-name">{product.name}</h1>
                     <h1 className="title is-4 product-name">{product.brand}</h1>
                     <Price product={product} variant={selectedVariant} isAllOptionsSelected={isAllOptionsSelected} settings={settings} />
+
+                    <div className="wrapper2">
+                      <input type="checkbox" id="st5" value="5" readOnly checked={rate===5}/>
+                      <label htmlFor="st5"></label>
+                      <input type="checkbox" id="st4" value="4" readOnly checked={rate===4}/>
+                      <label htmlFor="st4"></label>
+                      <input type="checkbox" id="st3" value="3" readOnly checked={rate===3}/>
+                      <label htmlFor="st3"></label>
+                      <input type="checkbox" id="st2" value="2" readOnly checked={rate===2}/>
+                      <label htmlFor="st2"></label>
+                      <input type="checkbox" id="st1" value="1" readOnly checked={rate===1}/>
+                      <label htmlFor="st1"></label>
+                    </div>
 
                     {themeSettings.show_discount_countdown && product.on_sale === true &&
                       <DiscountCountdown product={product} />
@@ -169,6 +224,16 @@ export default class ProductDetails extends React.Component {
                   <div className="column is-5">
                     <Attributes attributes={product.attributes} />
                   </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="section section-product">
+            <div className="container">
+              <div className="content">
+                <div className="columns">
+                  {commentaries()}
                 </div>
               </div>
             </div>

@@ -18,6 +18,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         slug: values.slug,
         brand: values.brand,
         compatibility: values.compatibility,
+        rating: values.rating,
+        comments: values.comments,
         meta_title: values.meta_title,
         meta_description: values.meta_description,
         description: values.description

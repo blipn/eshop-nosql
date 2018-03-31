@@ -83,6 +83,8 @@ const RelatedProduct = ({ settings, product, actions }) => {
         name={product.name}
         brand={product.brand}
         compatibility={product.compatibility}
+        rating={product.rating}
+        comments={product.comments}
         thumbnailUrl={thumbnailUrl}
         priceFormatted={priceFormatted}
         enabled={product.enabled}

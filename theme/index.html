@@ -9,6 +9,7 @@
   {meta}
   {placeholder_head_start}
   {link}
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
   <link rel="icon" type="image/png" href="/assets/images/icons/icon-16.png" sizes="16x16">
   <link rel="icon" type="image/png" href="/assets/images/icons/icon-32.png" sizes="32x32">
   <link rel="icon" type="image/png" href="/assets/images/icons/icon-128.png" sizes="128x128">
@@ -31,6 +32,57 @@
   {placeholder_head_end}
 </head>
 <body>
+  <style>
+      .wrapper2 {
+        position: relative;
+        display: inline-block;
+        border: none;
+        font-size: 14px;
+        left: 20%;
+        transform: translateX(-50%);
+      }
+
+      .wrapper2 input {
+        border: 0;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        position: absolute !important;
+        clip: rect(1px 1px 1px 1px);
+        clip: rect(1px, 1px, 1px, 1px);
+        opacity: 0;
+      }
+
+      .wrapper2 label {
+        position: relative;
+        float: right;
+        color: #C8C8C8;
+      }
+
+      .wrapper2 label:before {
+        margin: 5px;
+        content: "\f005";
+        font-family: FontAwesome;
+        display: inline-block;
+        font-size: 1.5em;
+        color: #ccc;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      .wrapper2 input:checked ~ label:before {
+        color: #FFC107;
+      }
+
+      .wrapper2 label:hover ~ label:before {
+        color: #ffdb70;
+      }
+
+      .wrapper2 label:hover:before {
+        color: #FFC107;
+      }
+  </style>
   {placeholder_body_start}
 
   <div id="app">{app}</div>

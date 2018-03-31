@@ -62,6 +62,8 @@ const ProductGeneralForm = ({ handleSubmit, pristine, reset, submitting, initial
               <p className="field-hint">{messages.help_slug}</p>
               <Field name="brand" component={TextField} floatingLabelText={messages.brand} fullWidth={true}/>
               <Field name="compatibility" component={TextField} floatingLabelText={messages.compatibility} fullWidth={true}/>
+              <Field name="rating" component={TextField} floatingLabelText={messages.rating} fullWidth={true}/>
+              <Field name="comments" component={TextField} floatingLabelText={messages.comments} fullWidth={true}/>
               <Field name="meta_title" component={TextField} floatingLabelText={messages.pageTitle} fullWidth={true}/>
               <Field name="meta_description" component={TextField} floatingLabelText={messages.metaDescription} fullWidth={true}/>
               <div className="field-hint" style={{ marginTop: 40 }}>{messages.description}</div>
