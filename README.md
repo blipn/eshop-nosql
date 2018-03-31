@@ -15,6 +15,14 @@ React and Node.js based eCommerce platform.
 * Node.js >= 8
 * MongoDB >= 3.2
 
+For the MongoDB configuration it's up to you to set thoses env variables :
+
+DB_HOST || '127.0.0.1';
+DB_PORT || 27017;
+DB_NAME || 'shop'
+DB_USER || '';
+DB_PASS || '';
+
 
 ## Installation & Launch
 ```
