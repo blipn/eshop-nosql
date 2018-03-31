@@ -33,6 +33,19 @@ npm run populate
 npm run start-all
 ```
 
+## Installation & Launch with populated database
+```
+npm cache verify
+npm install
+npm run build
+
+Stop mongod
+Copy the db folder content from the db.zip to /data/db on your disk
+Start mongod
+
+npm run start-all
+```
+
 API running at http://localhost:3001
 
 Store running at http://localhost:3000
