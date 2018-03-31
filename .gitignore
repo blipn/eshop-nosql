@@ -12,4 +12,3 @@ theme/assets/index.html
 dist/*
 logs/*.log
 npm-debug.log*
-*.zip
